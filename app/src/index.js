@@ -6,7 +6,7 @@ const port = 3000;
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello World\n');
+  res.end('Welcome to case study one app on node nginx\n');
 });
 
 server.listen(port, hostname, () => {

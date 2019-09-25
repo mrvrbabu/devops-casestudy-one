@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-nodenginx
+spec:
+  selector:
+    matchLabels:
+      run: my-nodenginx
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        run: my-nodenginx
+    spec:
+      containers:
+      - name: nodenginx01
+        image: docker.io/vrbabu/devops-casestudy-one:nodenginx01
+        ports:
+        - containerPort: 8080
+      imagePullSecrets:
+        - name: regicred
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-nodenginx
+  labels:
+    run: my-nodenginx
+spec:
+  ports:
+  - port: 80
+    targetPort: 8080
+    protocol: TCP
+    name: http 
+  selector:
+    run: my-nodenginx

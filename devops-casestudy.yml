@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: devops-casestudy
+spec:
+  containers:
+  - name: nodenginx01
+    image: docker.io/vrbabu/devops-casestudy-one:nodenginx01
+    ports:
+    - containerPort: 8080
+  imagePullSecrets:
+    - name: regicred
